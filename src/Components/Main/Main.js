@@ -1,14 +1,14 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import "./main.scss";
+import './media.scss';
 
 function Main({ pokemon, setPokemon }) {
     useEffect(() => {
-        axios.get('https://pokeapi.co/api/v2/pokemon/')
-            .then(response => {
-                setPokemon(response.data.results);
-            })
-    }, []);
+        axios('https://pokeapi.co/api/v2/pokemon/').then(({ data }) =>
+          setPokemon(data.results)
+        )
+      }, [setPokemon]);
     return (
         <>
             <div className='main'>
